@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\johny\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\johny\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Top Down Shooter.-462922332.00" t="ExcludeRecursive" />
+    <e p="D:\Users\johny\Projekty\Top Down Shooter" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="GunHeavyDrop.cs" t="Include" />
+        <e p="Old" t="Include">
+          <e p="PlayerController.cs" t="Include" />
+          <e p="Projectile.cs" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Bullet.cs" t="Include" />
+          <e p="CameraController.cs" t="Include" />
+          <e p="Enemy.cs" t="Include" />
+          <e p="Gun.cs" t="Include" />
+          <e p="PlayerMovement.cs" t="Include" />
+          <e p="Subject.cs" t="Include" />
+          <e p="Weapon.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+      <e p="Top Down Shooter.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
