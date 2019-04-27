@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunHeavyDrop : MonoBehaviour
 {
-    public Gun GunPrefab;
+    public Weapon GunPrefab;
     public bool PlayerInRange;
     private PlayerMovement player;
 

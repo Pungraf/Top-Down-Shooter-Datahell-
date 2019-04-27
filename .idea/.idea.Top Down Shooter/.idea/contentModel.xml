@@ -16,8 +16,14 @@
           <e p="CameraController.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
           <e p="Gun.cs" t="Include" />
+          <e p="Interactable.cs" t="Include" />
+          <e p="Inventory.cs" t="Include" />
+          <e p="Item.cs" t="Include" />
+          <e p="ItemPickup.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
+          <e p="RayBullet.cs" t="Include" />
           <e p="Subject.cs" t="Include" />
+          <e p="TranslateBullet.cs" t="Include" />
           <e p="Weapon.cs" t="Include" />
         </e>
       </e>

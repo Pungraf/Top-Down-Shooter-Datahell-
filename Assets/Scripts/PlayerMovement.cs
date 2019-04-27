@@ -9,13 +9,13 @@ public class PlayerMovement : Subject
 	private Vector3 movement;
 	private Animator anim;
 	private Rigidbody playerRigidbody;
-	private float camRayLength = 100f;
-	private Camera camera;
+	private new Camera camera;
 	public float rotationSpeed = 7f;
 	public Weapon currentWeapon;
 	public List<Weapon> gunList = new List<Weapon>();
 	public GameObject Handle;
 	public int weaponID;
+	public Interactable focus;
 
 	void Awake()
 	{
@@ -37,6 +37,7 @@ public class PlayerMovement : Subject
 	void Update()
 	{
 		WeaponSwitch();
+		Focus();
 	}
 
 	private void FixedUpdate()
@@ -52,15 +53,6 @@ public class PlayerMovement : Subject
 
 	void Move(float h, float v)
 	{
-		/*if (h != 0 || v != 0)
-		{
-			anim.SetBool("Running", true);
-		}
-		else
-		{
-			anim.SetBool("Running", false);
-		}*/
-		
 		movement.Set (h, 0f, v);
 		movement = movement.normalized * speed * Time.deltaTime;
         
@@ -135,5 +127,61 @@ public class PlayerMovement : Subject
 		currentWeapon.transform.parent = Handle.transform;
 		currentWeapon.transform.rotation = Handle.transform.rotation;
 		yield return null;
+	}
+	
+	
+
+	private void Focus()
+	{
+		if (Input.GetMouseButtonDown(0))
+		{
+			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+
+			if (Physics.Raycast(ray, out hit, 100))
+			{
+				RemoveFocus();
+			}
+		}
+		
+		if (Input.GetMouseButtonDown(1))
+		{
+			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+
+			if (Physics.Raycast(ray, out hit, 100))
+			{
+				Interactable interactable = hit.collider.GetComponent<Interactable>();
+				if (interactable != null)
+				{
+					SetFocus(interactable);
+				}
+			}
+		}
+	}
+
+	void SetFocus(Interactable newFocus)
+	{
+		if (newFocus != focus)
+		{
+			if (focus != null)
+			{
+				focus.OnDefocus();
+			}
+
+			focus = newFocus;
+		}
+		focus.OnFocused(transform);
+		focus.Interact();
+	}
+
+	void RemoveFocus()
+	{
+		if (focus != null)
+		{
+			focus.OnDefocus();
+		}
+
+		focus = null;
 	}
 }

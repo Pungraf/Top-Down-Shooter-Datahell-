@@ -9,13 +9,8 @@ public class Gun : Weapon
     private Transform _spawn;
     private bool WeaponIsOnCooldown;
     public float TimeToCooldown = 0.5f;
-    public float maxshotDistance = 10f;
-    private LineRenderer trace;
     public PlayerMovement Owner;
     public AudioSource audio;
-    private GameObject victimGO;
-    private Subject victim;
-    public int Dmg = 10;
     public GameObject Bullet;
 
     private void Start()
@@ -23,8 +18,6 @@ public class Gun : Weapon
         Barrel = transform.Find("Barrel").gameObject;
         Owner = GetComponentInParent<PlayerMovement>();
         _spawn = Barrel.transform;
-        trace = GetComponent<LineRenderer>();
-        trace.enabled = false;
         audio = GetComponent<AudioSource>();
     }
 
@@ -65,6 +58,15 @@ public class Gun : Weapon
             newBullet.transform.rotation = _spawn.rotation;
             audio.Play();
         }
+    
+    private void FireRay()
+    {
+            
+        GameObject newBullet = Instantiate(Bullet, _spawn.position, Quaternion.identity);
+        //TODO  Add Recoil 
+        newBullet.transform.rotation = _spawn.rotation;
+        audio.Play();
+    }
 
     private IEnumerator FireCooldown()
     {
@@ -73,38 +75,5 @@ public class Gun : Weapon
         WeaponIsOnCooldown = false;
     }
     
-    private IEnumerator RenderTrace(Vector3 hitPoint)
-    {
-        trace.enabled = true;
-        trace.SetPosition(0, _spawn.position);
-        trace.SetPosition(1, _spawn.position + hitPoint);
-        yield return null;
-        trace.enabled = false;
-    }
-
-    private void FireRay()
-    {
-        Ray ray = new Ray(_spawn.position,_spawn.forward);
-        RaycastHit hit;
-
-        float shotDistance = maxshotDistance;
-        
-        if (Physics.Raycast(ray, out hit, shotDistance))
-        {
-            victimGO = hit.collider.gameObject;
-            victim = victimGO.GetComponent<Subject>();
-            if (victim != null)
-            {
-                victim.GetDmg(Dmg);
-            }
-            shotDistance = hit.distance;
-        }
-
-        if (trace)
-        {
-            StartCoroutine("RenderTrace", ray.direction * shotDistance);
-        }
-        audio.Play();
-        
-    }
+    
 }
