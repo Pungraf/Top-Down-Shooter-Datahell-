@@ -59,10 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Old\PlayerController.cs" />
-    <Compile Include="Assets\Old\Projectile.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GUIScripts\EquipmentManager.cs" />
     <Compile Include="Assets\Scripts\GUIScripts\EquipmentUI.cs" />
     <Compile Include="Assets\Scripts\GUIScripts\Inventory.cs" />
@@ -80,7 +79,7 @@
     <Compile Include="Assets\Scripts\ItemsScripts\ItemPickup.cs" />
     <Compile Include="Assets\Scripts\ItemsScripts\Weapon.cs" />
     <Compile Include="Assets\Scripts\ItemsScripts\WeaponObject.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PoolManager.cs" />
     <Compile Include="Assets\Scripts\Subject.cs" />
     <Reference Include="Unity.Timeline.Editor">

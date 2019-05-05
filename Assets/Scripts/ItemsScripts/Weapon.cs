@@ -11,6 +11,8 @@ public class Weapon : Equipment
     {
         base.Use();
         EquipmentManager.instance.EquipWeaponObject(this);
+        GameManager.instance.Player.ModeSwitch(1);
+        
     }
     
 }

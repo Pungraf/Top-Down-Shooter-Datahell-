@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Scripting;
 
-public class PlayerMovement : Subject
+public class PlayerController : Subject
 {
 	public float speed;
 	private Vector3 movement;
@@ -111,13 +111,20 @@ public class PlayerMovement : Subject
      		}
      	}
 	
-	void ModeSwitch()
+	public void ModeSwitch(int forceSwitch = 0)
 	{
-		if (Input.GetKeyDown(KeyCode.Tab))
+		if (Input.GetKeyDown(KeyCode.Tab) || forceSwitch == 1)
 		{
-			ActionMode = !ActionMode;
-			
-			if (ActionMode)
+			if (forceSwitch == 0 && EquipmentManager.instance.RangedWeaapon != null)
+			{
+				ActionMode = !ActionMode;
+			}
+			else
+			{
+				ActionMode = false;
+			}
+
+			if (ActionMode && EquipmentManager.instance.RangedWeaapon != null)
 			{
 				Equip(EquipmentManager.instance.RangedWeaapon);
 			}
