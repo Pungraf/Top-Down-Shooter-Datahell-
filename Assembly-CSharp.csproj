@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\ItemsScripts\Weapon.cs" />
     <Compile Include="Assets\Scripts\ItemsScripts\WeaponObject.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PoolManager.cs" />
     <Compile Include="Assets\Scripts\Subject.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Users/johny/Projekty/Top Down Shooter/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

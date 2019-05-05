@@ -10,12 +10,15 @@ public class Gun : WeaponObject
     public float TimeToCooldown = 0.5f;
     public new AudioSource audio;
     public GameObject Bullet;
+    public Queue<GameObject> BulletPool;
+        
 
     private void Start()
     {
         Barrel = transform.Find("Barrel").gameObject;
         _spawn = Barrel.transform;
         audio = GetComponent<AudioSource>();
+        PoolManager.instance.CreatePool(Bullet, 50);
     }
 
 
@@ -29,8 +32,9 @@ public class Gun : WeaponObject
     private void Fire()
         {
             
-            GameObject newBullet = Instantiate(Bullet, _spawn.position, Quaternion.identity);
-            newBullet.transform.rotation = _spawn.rotation;
+            /*GameObject newBullet = Instantiate(Bullet, _spawn.position, Quaternion.identity);
+            newBullet.transform.rotation = _spawn.rotation;*/
+            PoolManager.instance.RespawnObject(Bullet, _spawn.position, _spawn.rotation);
             audio.Play();
         }
     
@@ -39,6 +43,5 @@ public class Gun : WeaponObject
     {
         yield return new WaitForSeconds(TimeToCooldown);    
     }
-    
-    
+
 }

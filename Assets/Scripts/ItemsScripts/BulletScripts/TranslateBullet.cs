@@ -51,6 +51,11 @@ public class TranslateBullet : Bullet
         {
             victim.GetDmg(Dmg);
         }
-        Destroy(this.gameObject);
+        Destroy();
+    }
+
+    public override void OnObjectReuse()
+    {
+        base.OnObjectReuse();
     }
 }

@@ -37,6 +37,7 @@
             <e p="WeaponObject.cs" t="Include" />
           </e>
           <e p="PlayerMovement.cs" t="Include" />
+          <e p="PoolManager.cs" t="Include" />
           <e p="Subject.cs" t="Include" />
         </e>
       </e>
