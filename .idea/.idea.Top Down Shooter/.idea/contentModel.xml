@@ -6,25 +6,38 @@
     <e p="D:\Users\johny\Projekty\Top Down Shooter" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="GunHeavyDrop.cs" t="Include" />
         <e p="Old" t="Include">
           <e p="PlayerController.cs" t="Include" />
           <e p="Projectile.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
-          <e p="Bullet.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
-          <e p="Gun.cs" t="Include" />
-          <e p="Interactable.cs" t="Include" />
-          <e p="Inventory.cs" t="Include" />
-          <e p="Item.cs" t="Include" />
-          <e p="ItemPickup.cs" t="Include" />
+          <e p="GUIScripts" t="Include">
+            <e p="EquipmentManager.cs" t="Include" />
+            <e p="EquipmentUI.cs" t="Include" />
+            <e p="Inventory.cs" t="Include" />
+            <e p="InventorySlot.cs" t="Include" />
+            <e p="InventoryUI.cs" t="Include" />
+            <e p="Slot.cs" t="Include" />
+          </e>
+          <e p="ItemsScripts" t="Include">
+            <e p="Armor.cs" t="Include" />
+            <e p="BulletScripts" t="Include">
+              <e p="Bullet.cs" t="Include" />
+              <e p="RayBullet.cs" t="Include" />
+              <e p="TranslateBullet.cs" t="Include" />
+            </e>
+            <e p="Equipment.cs" t="Include" />
+            <e p="Gun.cs" t="Include" />
+            <e p="Interactable.cs" t="Include" />
+            <e p="Item.cs" t="Include" />
+            <e p="ItemPickup.cs" t="Include" />
+            <e p="Weapon.cs" t="Include" />
+            <e p="WeaponObject.cs" t="Include" />
+          </e>
           <e p="PlayerMovement.cs" t="Include" />
-          <e p="RayBullet.cs" t="Include" />
           <e p="Subject.cs" t="Include" />
-          <e p="TranslateBullet.cs" t="Include" />
-          <e p="Weapon.cs" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />

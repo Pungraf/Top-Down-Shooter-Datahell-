@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Scripting;
 
 public class PlayerMovement : Subject
 {
@@ -11,11 +13,10 @@ public class PlayerMovement : Subject
 	private Rigidbody playerRigidbody;
 	private new Camera camera;
 	public float rotationSpeed = 7f;
-	public Weapon currentWeapon;
-	public List<Weapon> gunList = new List<Weapon>();
+	public WeaponObject currentWeapon;
 	public GameObject Handle;
-	public int weaponID;
 	public Interactable focus;
+	public bool ActionMode = false;
 
 	void Awake()
 	{
@@ -23,21 +24,25 @@ public class PlayerMovement : Subject
 		anim = GetComponent<Animator>();
 		playerRigidbody = GetComponent<Rigidbody>();
 		camera = Camera.main;
-		
-		//TODO fix it ...
-		currentWeapon = Instantiate(gunList[0],
-			new Vector3(Handle.transform.position.x, Handle.transform.position.y, Handle.transform.position.z),
-			Quaternion.identity);
-		currentWeapon.transform.parent = Handle.transform;
-		currentWeapon.transform.rotation = Handle.transform.rotation;
-		
 	}
-	
+
+	private void Start()
+	{
+		Equip(EquipmentManager.instance.BareHands);
+	}
+
+
 	// Update is called once per frame
 	void Update()
 	{
+		if (EventSystem.current.IsPointerOverGameObject())
+		{
+			return;
+		}
+		
 		WeaponSwitch();
 		Focus();
+		ModeSwitch();
 	}
 
 	private void FixedUpdate()
@@ -92,41 +97,58 @@ public class PlayerMovement : Subject
 	}
 
 	void WeaponSwitch()
+     	{
+     		if (Input.GetKeyDown(KeyCode.Mouse2) && ActionMode)
+     		{
+	            if (currentWeapon == EquipmentManager.instance.RangedWeaapon)
+	            {
+		            Equip(EquipmentManager.instance.MeleeWeapon);
+	            }
+	            else
+	            {
+		            Equip(EquipmentManager.instance.RangedWeaapon);
+	            }
+     		}
+     	}
+	
+	void ModeSwitch()
 	{
-		if (Input.GetKeyDown(KeyCode.Mouse2))
+		if (Input.GetKeyDown(KeyCode.Tab))
 		{
-			if (gunList.Count <= weaponID + 1)
+			ActionMode = !ActionMode;
+			
+			if (ActionMode)
 			{
-				weaponID = 0;
+				Equip(EquipmentManager.instance.RangedWeaapon);
 			}
 			else
 			{
-				weaponID++;
+				Equip(EquipmentManager.instance.BareHands);
 			}
-			StartCoroutine(EquipNext(weaponID));
 		}
 	}
 //	Save current position
-	public virtual Vector3 GetMovementAxis
-	{
-		get
-		{
-			return new Vector3(
-				Input.GetAxis("Horizontal"),
-				0,
-				Input.GetAxis("Vertical"));
-		}
-	}
+	private Vector3 GetMovementAxis =>
+		new Vector3(
+			Input.GetAxis("Horizontal"),
+			0,
+			Input.GetAxis("Vertical"));
 
-	private IEnumerator EquipNext(int ID)
+	private void Equip(WeaponObject weapon)
 	{
-		Destroy(currentWeapon.gameObject);
-		currentWeapon = Instantiate(gunList[ID],
-			new Vector3(Handle.transform.position.x, Handle.transform.position.y, Handle.transform.position.z),
-			Quaternion.identity);
-		currentWeapon.transform.parent = Handle.transform;
-		currentWeapon.transform.rotation = Handle.transform.rotation;
-		yield return null;
+		if (currentWeapon != null)
+		{
+			Destroy(currentWeapon.gameObject);
+		}
+
+		if (weapon != null)
+		{
+			currentWeapon = Instantiate(weapon,
+				new Vector3(Handle.transform.position.x, Handle.transform.position.y, Handle.transform.position.z),
+				Quaternion.identity);
+			currentWeapon.transform.parent = Handle.transform;
+			currentWeapon.transform.rotation = Handle.transform.rotation;
+		}
 	}
 	
 	
@@ -142,7 +164,7 @@ public class PlayerMovement : Subject
 			{
 				RemoveFocus();
 			}
-		}
+		} 
 		
 		if (Input.GetMouseButtonDown(1))
 		{

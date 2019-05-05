@@ -59,22 +59,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GunHeavyDrop.cs" />
     <Compile Include="Assets\Old\PlayerController.cs" />
     <Compile Include="Assets\Old\Projectile.cs" />
-    <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Gun.cs" />
-    <Compile Include="Assets\Scripts\Interactable.cs" />
-    <Compile Include="Assets\Scripts\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Item.cs" />
-    <Compile Include="Assets\Scripts\ItemPickup.cs" />
+    <Compile Include="Assets\Scripts\GUIScripts\EquipmentManager.cs" />
+    <Compile Include="Assets\Scripts\GUIScripts\EquipmentUI.cs" />
+    <Compile Include="Assets\Scripts\GUIScripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\GUIScripts\InventorySlot.cs" />
+    <Compile Include="Assets\Scripts\GUIScripts\InventoryUI.cs" />
+    <Compile Include="Assets\Scripts\GUIScripts\Slot.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\Armor.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\BulletScripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\BulletScripts\RayBullet.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\BulletScripts\TranslateBullet.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\Equipment.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\Gun.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\Interactable.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\Item.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\ItemPickup.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\Weapon.cs" />
+    <Compile Include="Assets\Scripts\ItemsScripts\WeaponObject.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\RayBullet.cs" />
     <Compile Include="Assets\Scripts\Subject.cs" />
-    <Compile Include="Assets\Scripts\TranslateBullet.cs" />
-    <Compile Include="Assets\Scripts\Weapon.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Users/johny/Projekty/Top Down Shooter/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
